@@ -1,3 +1,7 @@
+const APP_ID = "530e02bb27b840258e2da5fc229aa700";
+const APP_TOKEN = "006530e02bb27b840258e2da5fc229aa700IADA6NFulY3nj4qezHEUJ1LfHbCwSZZvMQP+k50z7oc0vEOQEggAAAAAEABfjXZESXZcYAEAAQBIdlxg";
+const CHANNEL_NAME = "myChannel";
+
 // Handle errors.
 let handleError = function (err) {
   console.log("Error: ", err);
@@ -29,10 +33,10 @@ let client = AgoraRTC.createClient({
   codec: "vp8",
 });
 
-client.init("530e02bb27b840258e2da5fc229aa700");
+client.init(APP_ID);
 
 // Join a channel
-client.join("006530e02bb27b840258e2da5fc229aa700IABnzT8+KHbnMWLW+iw4XPk6qK7PiTZOdhDRZQk+JWFn14a0dcYAAAAAEABfjXZEXV9UYAEAAQBdX1Rg", "my-channel", null, (uid) => {
+client.join(APP_TOKEN, CHANNEL_NAME, null, (uid) => {
   // Create a local stream
   let localStream = AgoraRTC.createStream({
     audio: true,
