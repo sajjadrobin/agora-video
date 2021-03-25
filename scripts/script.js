@@ -1,5 +1,5 @@
 const APP_ID = "530e02bb27b840258e2da5fc229aa700";
-const APP_TOKEN = "006530e02bb27b840258e2da5fc229aa700IADA6NFulY3nj4qezHEUJ1LfHbCwSZZvMQP+k50z7oc0vEOQEggAAAAAEABfjXZESXZcYAEAAQBIdlxg";
+const APP_TOKEN = "006530e02bb27b840258e2da5fc229aa700IADDiRzOWdZxpZtnhtLz9KaOKLqyDm0VTVdcwE3ankuZ6UOQEggAAAAAEABfjXZEwOJdYAEAAQDA4l1g+k50z7oc0vEOQEggAAAAAEABfjXZESXZcYAEAAQBIdlxg";
 const CHANNEL_NAME = "myChannel";
 
 // Handle errors.
@@ -18,7 +18,7 @@ function addVideoStream(elementId) {
   streamDiv.id = elementId;
   streamDiv.classList.add("video-container");
   // Takes care of the lateral inversion
-  streamDiv.style.transform = "rotateY(180deg)";
+  //streamDiv.style.transform = "rotateY(180deg)";
   // Adds the div to the container.
   remoteContainer.appendChild(streamDiv);
 };
