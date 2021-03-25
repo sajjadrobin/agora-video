@@ -25,6 +25,15 @@ h1,h4{
     width: 100vw;
     bottom: 0;
     overflow-x: auto;
+    padding: 0 1rem ;
+}
+
+.video-container {
+    margin-right: 1rem;
+}
+
+.video-container > div{
+    border-radius: .5rem;
 }
 #remote-container video{
     width: calc(25vh*0.75) !important;
