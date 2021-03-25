@@ -17,7 +17,7 @@ function addVideoStream(elementId) {
   // Assigns the elementId to the div.
   streamDiv.id = elementId;
   // Takes care of the lateral inversion
-  streamDiv.style.transform = "rotateY(180deg)";
+  // streamDiv.style.transform = "rotateY(180deg)";
   // Adds the div to the container.
   remoteContainer.appendChild(streamDiv);
 };

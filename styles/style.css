@@ -24,8 +24,10 @@ h1,h4{
     height: 25vh;
     width: 100vw;
     bottom: 0;
+    overflow-x: auto;
 }
 #remote-container video{
-    width: 10vw !important;
+    width: calc(25vh*0.75) !important;
+    min-width: 100px;
     position: relative !important;
 }
