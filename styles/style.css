@@ -21,21 +21,21 @@ h1,h4{
 .volume-control {
     position: absolute;
     z-index: 1000;
-    background: white;
+
     right: 1rem;
-    min-width: 24px;
-    min-height: 24px;
+    width: 12%;
+    height: 12%;
 }
 
 .top-1rem {
-    top: 1rem;
+    top: 12%;
 }
 .top-3rem {
-    top: 3rem;
+    top: 24%;
 }
 
 .top-5rem {
-    top: 5rem;
+    top: 36%;
 }
 #remote-container{
     position: absolute;

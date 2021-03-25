@@ -52,13 +52,13 @@ client.join(APP_TOKEN, CHANNEL_NAME, null, (uid) => {
     localStream.play("me");
     // Publish the local stream
     client.publish(localStream, handleError);
-    // streamReference = localStream;
+    streamReference = localStream;
   },handleError);
 },handleError);
 
 // Subscribe to the remote stream when it is published
 client.on("stream-added", function(evt){
-  streamReference = evt.stream;
+  //streamReference = evt.stream;
   client.subscribe(evt.stream, handleError);
 });
 // Play the remote stream when it is subsribed
@@ -87,7 +87,11 @@ client.on("peer-leave", function(evt){
 // volume down handler
 document.getElementById("volume_mute")
   .addEventListener('click', function (event) {
-    streamReference.setAudioVolume(0);
+    if(!streamReference.userMuteAudio) {
+      streamReference.muteAudio()
+    } else {
+      streamReference.unmuteAudio();
+    }
   });
 
 document.getElementById("volume_up")
@@ -103,3 +107,8 @@ document.getElementById("volume_down")
   if( defaultVolume < 0) defaultVolume = 0;
   streamReference.setAudioVolume(defaultVolume);
 });
+
+client.on("mute-audio", function (evt) {
+  console.log("mute audion successful", evt);
+  console.log(streamReference.getAudioLevel());
+})
