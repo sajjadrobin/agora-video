@@ -52,12 +52,13 @@ client.join(APP_TOKEN, CHANNEL_NAME, null, (uid) => {
     localStream.play("me");
     // Publish the local stream
     client.publish(localStream, handleError);
-    streamReference = localStream;
+    // streamReference = localStream;
   },handleError);
 },handleError);
 
 // Subscribe to the remote stream when it is published
 client.on("stream-added", function(evt){
+  streamReference = evt.stream;
   client.subscribe(evt.stream, handleError);
 });
 // Play the remote stream when it is subsribed

@@ -23,6 +23,8 @@ h1,h4{
     z-index: 1000;
     background: white;
     right: 1rem;
+    min-width: 24px;
+    min-height: 24px;
 }
 
 .top-1rem {
