@@ -6,6 +6,8 @@ const CHANNEL_NAME = "myChannel";
 let handleError = function (err) {
   console.log("Error: ", err);
 };
+let streamReference;
+let defaultVolume = 50;
 
 // Query the container to which the remote stream belong.
 let remoteContainer = document.getElementById("remote-container");
@@ -50,6 +52,7 @@ client.join(APP_TOKEN, CHANNEL_NAME, null, (uid) => {
     localStream.play("me");
     // Publish the local stream
     client.publish(localStream, handleError);
+    streamReference = localStream;
   },handleError);
 },handleError);
 
@@ -78,4 +81,24 @@ client.on("peer-leave", function(evt){
   let streamId = String(stream.getId());
   stream.close();
   removeVideoStream(streamId);
+});
+
+// volume down handler
+document.getElementById("volume_mute")
+  .addEventListener('click', function (event) {
+    streamReference.setAudioVolume(0);
+  });
+
+document.getElementById("volume_up")
+.addEventListener('click', function (event) {
+  defaultVolume += 10;
+  if( defaultVolume > 100) defaultVolume = 100;
+  streamReference.setAudioVolume(defaultVolume);
+});
+
+document.getElementById("volume_down")
+.addEventListener('click', function (event) {
+  defaultVolume -= 10;
+  if( defaultVolume < 0) defaultVolume = 0;
+  streamReference.setAudioVolume(defaultVolume);
 });

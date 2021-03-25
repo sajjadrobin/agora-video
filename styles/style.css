@@ -17,6 +17,24 @@ h1,h4{
 #me video{
     position: relative !important;
 }
+
+.volume-control {
+    position: absolute;
+    z-index: 1000;
+    background: white;
+    right: 1rem;
+}
+
+.top-1rem {
+    top: 1rem;
+}
+.top-3rem {
+    top: 3rem;
+}
+
+.top-5rem {
+    top: 5rem;
+}
 #remote-container{
     position: absolute;
     display: flex;
