@@ -21,9 +21,8 @@ h1,h4{
 .volume-control {
     position: absolute;
     z-index: 1000;
-
+    background: white;
     right: 1rem;
-    width: 12%;
     height: 12%;
 }
 

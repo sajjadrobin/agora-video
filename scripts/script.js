@@ -1,5 +1,5 @@
 const APP_ID = "530e02bb27b840258e2da5fc229aa700";
-const APP_TOKEN = "006530e02bb27b840258e2da5fc229aa700IADDiRzOWdZxpZtnhtLz9KaOKLqyDm0VTVdcwE3ankuZ6UOQEggAAAAAEABfjXZEwOJdYAEAAQDA4l1g+k50z7oc0vEOQEggAAAAAEABfjXZESXZcYAEAAQBIdlxg";
+const APP_TOKEN = "006530e02bb27b840258e2da5fc229aa700IAAVb2WmPCzqe+TzsBkaegiFzL8vnfUbvPYAz8oz5rnKoEOQEggAAAAAEAC5X9YGKrxiYAEAAQAnvGJg";
 const CHANNEL_NAME = "myChannel";
 
 // Handle errors.
@@ -20,7 +20,7 @@ function addVideoStream(elementId) {
   streamDiv.id = elementId;
   streamDiv.classList.add("video-container");
   // Takes care of the lateral inversion
-  //streamDiv.style.transform = "rotateY(180deg)";
+  streamDiv.style.transform = "rotateY(180deg)";
   // Adds the div to the container.
   remoteContainer.appendChild(streamDiv);
 };
@@ -32,7 +32,7 @@ function removeVideoStream(elementId) {
 };
 
 let client = AgoraRTC.createClient({
-  mode: "rtc",
+  mode: "live",
   codec: "vp8",
 });
 
@@ -53,12 +53,12 @@ client.join(APP_TOKEN, CHANNEL_NAME, null, (uid) => {
     // Publish the local stream
     client.publish(localStream, handleError);
     streamReference = localStream;
+    streamReference.setVideoProfile("240p_1");
   },handleError);
 },handleError);
 
 // Subscribe to the remote stream when it is published
 client.on("stream-added", function(evt){
-  //streamReference = evt.stream;
   client.subscribe(evt.stream, handleError);
 });
 // Play the remote stream when it is subsribed
@@ -88,7 +88,7 @@ client.on("peer-leave", function(evt){
 document.getElementById("volume_mute")
   .addEventListener('click', function (event) {
     if(!streamReference.userMuteAudio) {
-      streamReference.muteAudio()
+      streamReference.muteAudio();
     } else {
       streamReference.unmuteAudio();
     }
