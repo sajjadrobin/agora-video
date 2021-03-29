@@ -11,6 +11,8 @@ let defaultVolume = 50;
 
 // Query the container to which the remote stream belong.
 let remoteContainer = document.getElementById("remote-container");
+let params = (new URL(document.location)).searchParams;
+let role = params.get('role');
 
 // Add video streams to the container.
 function addVideoStream(elementId) {
@@ -53,7 +55,14 @@ client.join(APP_TOKEN, CHANNEL_NAME, null, (uid) => {
     // Publish the local stream
     client.publish(localStream, handleError);
     streamReference = localStream;
-    streamReference.setVideoProfile("240p_1");
+
+    if(role === "host") {
+      client.setClientRole(role);
+      streamReference.setVideoProfile("1080p_1");
+    } else {
+      client.setClientRole("audience");
+      streamReference.setVideoProfile("240p_1");
+    }
   },handleError);
 },handleError);
 
